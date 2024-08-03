@@ -8,6 +8,7 @@ Once this is useable, I might convert it to a Python package using my [Python Te
 
 ## installed packages
 - Flask 3.0.3
+- Flask-WTF 1.2.1
 
 ## disabled lints
 ### pylint
