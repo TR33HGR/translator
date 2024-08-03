@@ -12,6 +12,7 @@ Once this is useable, I might convert it to a Python package using my [Python Te
 ## disabled lints
 ### pylint
 - C0114 missing module docstring
+- C0115 missing class docstring
 - C0116 missing function docstring
 
 ### flake8
