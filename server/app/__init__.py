@@ -1,9 +1,13 @@
 from flask import Flask
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 
 from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-# pylint: disable=C0413
-from app import routes  # noqa: E402, F401
+# pylint: disable=C0413, W0406
+from app import routes, models  # noqa: E402, F401

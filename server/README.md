@@ -9,6 +9,8 @@ Once this is useable, I might convert it to a Python package using my [Python Te
 ## installed packages
 - Flask 3.0.3
 - Flask-WTF 1.2.1
+- Flask-SQLAlchemy 3.1.1
+- Flask-Migrate 4.0.7
 
 ## disabled lints
 ### pylint
@@ -38,4 +40,23 @@ Flask requires you to define a `FLASK_APP` environment variable. I recommend cre
 To run the app in developer mode, run:
 ```
 flask run
+```
+
+## Building
+### Database
+This app currently has a database for users. Every time the structure of that database changes you will need to rebuild.
+
+To rebuild, run:
+```
+flask db migrate -m "<some description of the change>"
+flask db upgrade
+```
+
+#### Clearing the database
+You can clear the database by taking advantage of the migration support.
+
+Simply run:
+```
+flask db downgrade base
+flask db upgrade
 ```
