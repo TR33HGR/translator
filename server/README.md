@@ -42,6 +42,12 @@ To run the app in developer mode, run:
 flask run
 ```
 
+### Shell
+To open a shell env for playing with things, you can run:
+```
+flask shell
+```
+
 ## Building
 ### Database
 This app currently has a database for users. Every time the structure of that database changes you will need to rebuild.
