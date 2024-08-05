@@ -1,12 +1,13 @@
 from typing import Optional
+from flask_login import UserMixin
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from app import db
+from app import db, login
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     username: so.Mapped[str] = so.mapped_column(
         sa.String(64), index=True, unique=True)
@@ -22,3 +23,8 @@ class User(db.Model):
 
     def check_password(self, password: str) -> bool:
         return check_password_hash(self.password_hash, password)
+
+
+@login.user_loader
+def load_user(user_id: str) -> (User | None):
+    return db.session.get(User, int(user_id))
