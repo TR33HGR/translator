@@ -12,6 +12,7 @@ Once this is useable, I might convert it to a Python package using my [Python Te
 - Flask-SQLAlchemy 3.1.1
 - Flask-Migrate 4.0.7
 - Flask-Login 0.6.3
+- Email-Validator 2.2.0
 
 ## disabled lints
 ### pylint
