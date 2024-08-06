@@ -50,6 +50,19 @@ To open a shell env for playing with things, you can run:
 flask shell
 ```
 
+### Debugging
+To run flask in debug mode, either:
+
+-
+    ```
+    export FLASK_DEBUG=1
+    ```
+
+- or add to your `.env` file
+    ```
+    FLASK_DEBUG=1
+    ```
+
 ## Building
 ### Database
 This app currently has a database for users. Every time the structure of that database changes you will need to rebuild.
