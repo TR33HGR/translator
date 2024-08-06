@@ -63,6 +63,45 @@ To run flask in debug mode, either:
     FLASK_DEBUG=1
     ```
 
+### Error emails
+When the app is not in debug mode, it is possible to have it email you when an error occurs.
+
+To make this happen you must define a `MAIL_SERVER`:
+- in your shell
+    ```
+    export MAIL_SERVER=<example.com>
+    ```
+
+- or add to your `.env` file
+    ```
+    MAIL_SERVER=<example.com>
+    ```
+
+You also have access to:
+- `MAIL_PORT`, default 25
+- `MAIL_USE_TLS`, `false` if undefined
+- `MAIL_USERNAME`
+- `MAIL_PASSWORD`
+
+#### Debugging
+You can debug this feature using the SMTP debugging server `aiosmtpd`.
+
+Simply install:
+```
+pip install aiosmtpd
+```
+
+then run:
+```
+aiosmtpd -n -c aiosmtpd.handlers.Debugging -l localhost:8025
+```
+
+and define some variables:
+```
+export MAIL_SERVER=localhost
+export MAIL_PORT=8025
+```
+
 ## Building
 ### Database
 This app currently has a database for users. Every time the structure of that database changes you will need to rebuild.
