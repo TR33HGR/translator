@@ -13,4 +13,4 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 # pylint: disable=C0413, W0406
-from app import routes, models  # noqa: E402, F401
+from app import routes, models, errors  # noqa: E402, F401
