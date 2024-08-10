@@ -1,5 +1,6 @@
 import logging
-from logging.handlers import SMTPHandler
+from logging.handlers import RotatingFileHandler, SMTPHandler
+import os
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -26,6 +27,17 @@ def send_errors_over_email() -> None:
     app.logger.addHandler(mail_handler)
 
 
+def output_logs_to_file() -> None:
+    if not os.path.exists('logs'):
+        os.mkdir('logs')
+    file_handler = RotatingFileHandler(
+        'logs/app.log', maxBytes=10240, backupCount=10)
+    file_handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+    file_handler.setLevel(logging.INFO)
+    app.logger.addHandler(file_handler)
+
+
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
@@ -34,6 +46,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 if not app.debug:
+    output_logs_to_file()
     if app.config['MAIL_SERVER']:
         send_errors_over_email()
 
