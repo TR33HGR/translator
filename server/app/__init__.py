@@ -50,6 +50,9 @@ if not app.debug:
     if app.config['MAIL_SERVER']:
         send_errors_over_email()
 
+    app.logger.setLevel(logging.INFO)
+    app.logger.info('App startup')
+
 
 # pylint: disable=C0413, W0406
 from app import routes, models, errors  # noqa: E402, F401
