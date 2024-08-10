@@ -13,6 +13,7 @@ Once this is useable, I might convert it to a Python package using my [Python Te
 - Flask-Migrate 4.0.7
 - Flask-Login 0.6.3
 - Email-Validator 2.2.0
+- PyHamcrest 2.1.0
 
 ## disabled lints
 ### pylint
