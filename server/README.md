@@ -120,3 +120,14 @@ Simply run:
 flask db downgrade base
 flask db upgrade
 ```
+
+## Testing
+To run unit tests, simply run:
+```
+py -m unittest
+```
+
+To specify what test file you want to run, pass it as a module, i.e.:
+```
+py -m unittest app.tests.test_module
+```
